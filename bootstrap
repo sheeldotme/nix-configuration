@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+if ! command -v nix &> /dev/null
+then
+  curl -L https://nixos.org/nix/install | sh
+fi
+
+sudo rm -f /etc/nix/nix.conf
+
+$SHELL -ic 'nix-shell -p git just --command just'
