@@ -8,5 +8,5 @@ fi
 sudo rm -f /etc/nix/nix.conf
 
 local_path=$HOME/.config/nixpkgs
-$SHELL -ic "if cd $local_path; then git pull; else gh auth login; gh repo clone nix-configuration $local_path; fi"
+$SHELL -ic nix-shell -p git gh --command "if cd $local_path; then git pull; else gh auth login; gh repo clone nix-configuration $local_path; fi"
 echo $SHELL -ic 'nix-shell -p git just --command just'
